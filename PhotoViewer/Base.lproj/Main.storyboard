@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="75" id="zyT-Ak-Aba"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Title" id="S5y-2a-KWz"/>
+                                    <navigationItem title="PhotoViewer" id="S5y-2a-KWz"/>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QUy-EA-Y3E">
@@ -83,7 +83,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w7f-Sg-lB3">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search image from words!!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w7f-Sg-lB3">
                                 <rect key="frame" x="15" y="124" width="384" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2ea-Ou-xQA"/>
