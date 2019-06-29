@@ -9,9 +9,8 @@
 import UIKit
 import RxDataSources
 
-struct FullImage {
-    var image: String
-    //    var image: UIImageView
+struct Image {
+    var imageURL: String
 }
 
 struct SectionOfImageData {
@@ -19,7 +18,7 @@ struct SectionOfImageData {
 }
 
 extension SectionOfImageData: SectionModelType {
-    typealias Item = FullImage
+    typealias Item = Image
 
     init(original: SectionOfImageData, items: [Item]) {
         self = original

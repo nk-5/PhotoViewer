@@ -30,12 +30,13 @@ class PhotoStreamViewController: UIViewController, UITableViewDelegate {
             configureCell: { _, tableView, indexPath, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "full", for: indexPath)
                 do {
-                    guard let url: URL = URL(string: item.image) else { return cell }
+                    guard let url: URL = URL(string: item.imageURL) else { return cell }
                     let imgData: Data = try Data(contentsOf: url)
                     guard let image: UIImage = UIImage(data: imgData) else { return cell }
                     cell.addSubview(UIImageView.init(image: image))
                 } catch {
-
+                    // TODO: set no image
+                    return cell
                 }
                 return cell
         })
@@ -56,18 +57,6 @@ class PhotoStreamViewController: UIViewController, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
-
-    //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //        var cell: UITableViewCell
-    //
-    //        if indexPath.row != 0 && (indexPath.row+1) % 3 == 0 {
-    //            cell = tableView.dequeueReusableCell(withIdentifier: "full", for: indexPath)
-    //        } else {
-    //            cell = tableView.dequeueReusableCell(withIdentifier: "thumbnail", for: indexPath)
-    //        }
-    //
-    //        return cell
-    //    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row != 0 && (indexPath.row+1) % 3 == 0 {

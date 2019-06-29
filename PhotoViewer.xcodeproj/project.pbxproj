@@ -16,7 +16,7 @@
 		1DB49E1022C65F5C0052A269 /* PhotozouAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB49E0F22C65F5C0052A269 /* PhotozouAPI.swift */; };
 		1DB49E1322C664000052A269 /* PhotozouAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB49E1222C663FF0052A269 /* PhotozouAPITests.swift */; };
 		1DB49E1522C671A70052A269 /* PhotoStreamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB49E1422C671A70052A269 /* PhotoStreamViewModel.swift */; };
-		1DB49E1822C674BB0052A269 /* FullImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB49E1722C674BB0052A269 /* FullImage.swift */; };
+		1DB49E1822C674BB0052A269 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB49E1722C674BB0052A269 /* Image.swift */; };
 		A6ACEC1FF42311504C4AD95E /* Pods_PhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A0540922737B81828D3847 /* Pods_PhotoViewer.framework */; };
 		DF6BEDE478A0CA55532DAE39 /* Pods_PhotoViewerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3E741A955E5F7D265102B8 /* Pods_PhotoViewerTests.framework */; };
 /* End PBXBuildFile section */
@@ -46,7 +46,7 @@
 		1DB49E0F22C65F5C0052A269 /* PhotozouAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotozouAPI.swift; sourceTree = "<group>"; };
 		1DB49E1222C663FF0052A269 /* PhotozouAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotozouAPITests.swift; sourceTree = "<group>"; };
 		1DB49E1422C671A70052A269 /* PhotoStreamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStreamViewModel.swift; sourceTree = "<group>"; };
-		1DB49E1722C674BB0052A269 /* FullImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImage.swift; sourceTree = "<group>"; };
+		1DB49E1722C674BB0052A269 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		56DD4389FCF789E1D2175BA9 /* Pods-PhotoViewerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoViewerTests.debug.xcconfig"; path = "Target Support Files/Pods-PhotoViewerTests/Pods-PhotoViewerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E3E741A955E5F7D265102B8 /* Pods_PhotoViewerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoViewerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B34FE12B51F8ED4945EB398 /* Pods-PhotoViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoViewer.release.xcconfig"; path = "Target Support Files/Pods-PhotoViewer/Pods-PhotoViewer.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 		1DB49E1622C6746A0052A269 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				1DB49E1722C674BB0052A269 /* FullImage.swift */,
+				1DB49E1722C674BB0052A269 /* Image.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -361,7 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DB49E0E22C50C2B0052A269 /* PhotoStreamViewController.swift in Sources */,
-				1DB49E1822C674BB0052A269 /* FullImage.swift in Sources */,
+				1DB49E1822C674BB0052A269 /* Image.swift in Sources */,
 				1DB49E1022C65F5C0052A269 /* PhotozouAPI.swift in Sources */,
 				1DB49DE922C252500052A269 /* AppDelegate.swift in Sources */,
 				1DB49E1522C671A70052A269 /* PhotoStreamViewModel.swift in Sources */,

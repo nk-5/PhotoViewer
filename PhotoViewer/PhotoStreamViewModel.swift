@@ -31,12 +31,13 @@ final class PhotoStreamViewModel {
             .asDriver(onErrorJustReturn: Response.empty)
 
         response.map {
-            var images: [FullImage] = []
+            var images: [Image] = []
             for photo in $0.info!.photo {
-                images.append(FullImage(image: photo.imageUrl))
+                images.append(Image(imageURL: photo.imageUrl))
             }
 
             return [SectionOfImageData(items: images)]
+            
             }
             .drive(photoView.items(dataSource: dataSources))
             .disposed(by: disposeBag)
