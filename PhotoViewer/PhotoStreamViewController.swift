@@ -23,17 +23,20 @@ class PhotoStreamViewController: UIViewController, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        photoView.dataSource = self
-        //        photoView.delegate = self
-
         let input = searchField.rx.controlEvent(.editingChanged)
             .map { self.searchField.text }
 
         let dataSource = RxTableViewSectionedReloadDataSource<SectionOfImageData>(
             configureCell: { _, tableView, indexPath, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "full", for: indexPath)
-                cell.textLabel?.text = item.image
-                //            cell.addSubview(item.image)
+                do {
+                    guard let url: URL = URL(string: item.image) else { return cell }
+                    let imgData: Data = try Data(contentsOf: url)
+                    guard let image: UIImage = UIImage(data: imgData) else { return cell }
+                    cell.addSubview(UIImageView.init(image: image))
+                } catch {
+
+                }
                 return cell
         })
         self.dataSource = dataSource
