@@ -20,7 +20,7 @@ enum Errors: Error {
 }
 
 struct Response: Codable {
-    var info: Info
+    var info: Info?
 
     struct Info: Codable {
         var photoNum: Int
@@ -48,7 +48,7 @@ struct Response: Codable {
         var mediumTag: String
     }
 
-    //    static let empty = Response(info: Response.Info)
+    static let empty = Response()
 }
 
 class PhotozouAPI: PhotozouAPIProtocol {

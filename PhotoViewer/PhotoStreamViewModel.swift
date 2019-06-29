@@ -6,4 +6,39 @@
 //  Copyright © 2019 Keigo Nakagawa. All rights reserved.
 //
 
-import Foundation
+import RxSwift
+import RxCocoa
+import RxDataSources
+
+final class PhotoStreamViewModel {
+    private let disposeBag = DisposeBag()
+    private let photozouAPIClient: PhotozouAPIProtocol
+
+    init(searchText: Observable<String?>,
+         photoView: Reactive<UITableView>,
+         dataSources: RxTableViewSectionedReloadDataSource<SectionOfImageData>,
+         photozouAPIClient: PhotozouAPIProtocol = PhotozouAPI()) {
+        self.photozouAPIClient = photozouAPIClient
+
+        let response = searchText
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .filter {($0 ?? "").count > 0}
+            .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .flatMapLatest {
+                photozouAPIClient.getImages(with: $0!, 10).catchErrorJustReturn(Response.empty)
+            }
+            .observeOn(MainScheduler.instance)
+            .asDriver(onErrorJustReturn: Response.empty)
+
+        response.map {
+            var images: [FullImage] = []
+            for photo in $0.info!.photo {
+                images.append(FullImage(image: photo.imageUrl))
+            }
+
+            return [SectionOfImageData(items: images)]
+            }
+            .drive(photoView.items(dataSource: dataSources))
+            .disposed(by: disposeBag)
+    }
+}
