@@ -10,7 +10,14 @@ import UIKit
 import RxDataSources
 
 struct Image {
-    var imageURL: String
+    var fullImageURL: UIImage?
+    var thumbnailURLs: [UIImage?]
+
+    init(fullImageURL: UIImage? = nil,
+         thumbnailURL: [UIImage?] = []) {
+        self.fullImageURL = fullImageURL
+        self.thumbnailURLs = thumbnailURL
+    }
 }
 
 struct SectionOfImageData {

@@ -29,21 +29,28 @@ class PhotoStreamViewController: UIViewController, UITableViewDelegate {
         let full = UINib(nibName: "FullImageCell", bundle: nil)
         photoView.register(full, forCellReuseIdentifier: "full")
 
+        let thumbnail = UINib(nibName: "ThumbnailImageCell", bundle: nil)
+        photoView.register(thumbnail, forCellReuseIdentifier: "thumbnail")
+
         let dataSource = RxTableViewSectionedReloadDataSource<SectionOfImageData>(
             configureCell: { _, tableView, indexPath, item in
-                guard let cell: FullImageCell = tableView.dequeueReusableCell(withIdentifier: "full", for: indexPath) as? FullImageCell else { return UITableViewCell() }
 
-                //                guard let cell: FullImageCell = tableView.dequeueReusableCell(withIdentifier: "full", for: indexPath) as? FullImageCell else { return UITableViewCell() }
-                do {
-                    guard let url: URL = URL(string: item.imageURL) else { return cell }
-                    let imgData: Data = try Data(contentsOf: url)
-                    guard let image: UIImage = UIImage(data: imgData) else { return cell }
-                    cell.fullImageView.image = image
-                    //                    cell.addSubview(UIImageView.init(image: image))
-                } catch {
-                    // TODO: set no image
+                if indexPath.row != 0 && (indexPath.row+1) % 3 == 0 {
+                    guard let cell: FullImageCell =
+                        tableView.dequeueReusableCell(withIdentifier: "full", for: indexPath) as? FullImageCell
+                        else { return UITableViewCell() }
+                    cell.fullImageView.image = item.fullImageURL
                     return cell
                 }
+
+                guard let cell: ThumbnailImageCell =
+                    tableView.dequeueReusableCell(withIdentifier: "thumbnail", for: indexPath) as? ThumbnailImageCell
+                    else { return UITableViewCell() }
+                cell.leftImage.image = item.thumbnailURLs[0]
+                if item.thumbnailURLs.count == 2 {
+                    cell.rightImage.image = item.thumbnailURLs[1]
+                }
+
                 return cell
         })
         self.dataSource = dataSource
