@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D1B1B9B22C7AB880084B3DE /* FullImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1B1B9A22C7AB880084B3DE /* FullImageCell.swift */; };
+		1D1B1B9D22C82D1D0084B3DE /* FullImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D1B1B9C22C82D1D0084B3DE /* FullImageCell.xib */; };
 		1DB49DE922C252500052A269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB49DE822C252500052A269 /* AppDelegate.swift */; };
 		1DB49DEE22C252500052A269 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DB49DEC22C252500052A269 /* Main.storyboard */; };
 		1DB49DF022C2525B0052A269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DB49DEF22C2525B0052A269 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		09A0540922737B81828D3847 /* Pods_PhotoViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D1B1B9A22C7AB880084B3DE /* FullImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageCell.swift; sourceTree = "<group>"; };
+		1D1B1B9C22C82D1D0084B3DE /* FullImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullImageCell.xib; sourceTree = "<group>"; };
 		1DB49DE522C252500052A269 /* PhotoViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB49DE822C252500052A269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DB49DED22C252500052A269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,6 +89,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1D1B1B9922C7935F0084B3DE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1D1B1B9A22C7AB880084B3DE /* FullImageCell.swift */,
+				1D1B1B9C22C82D1D0084B3DE /* FullImageCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		1DB49DDC22C252500052A269 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +121,7 @@
 		1DB49DE722C252500052A269 /* PhotoViewer */ = {
 			isa = PBXGroup;
 			children = (
+				1D1B1B9922C7935F0084B3DE /* Cells */,
 				1DB49E1622C6746A0052A269 /* DataSources */,
 				1DB49E1122C65F730052A269 /* PhotozouAPI */,
 				1DB49DE822C252500052A269 /* AppDelegate.swift */,
@@ -242,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D1B1B9D22C82D1D0084B3DE /* FullImageCell.xib in Resources */,
 				1DB49DF322C2525B0052A269 /* LaunchScreen.storyboard in Resources */,
 				1DB49DF022C2525B0052A269 /* Assets.xcassets in Resources */,
 				1DB49DEE22C252500052A269 /* Main.storyboard in Resources */,
@@ -362,6 +377,7 @@
 			files = (
 				1DB49E0E22C50C2B0052A269 /* PhotoStreamViewController.swift in Sources */,
 				1DB49E1822C674BB0052A269 /* Image.swift in Sources */,
+				1D1B1B9B22C7AB880084B3DE /* FullImageCell.swift in Sources */,
 				1DB49E1022C65F5C0052A269 /* PhotozouAPI.swift in Sources */,
 				1DB49DE922C252500052A269 /* AppDelegate.swift in Sources */,
 				1DB49E1522C671A70052A269 /* PhotoStreamViewModel.swift in Sources */,

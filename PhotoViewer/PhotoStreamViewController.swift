@@ -26,14 +26,20 @@ class PhotoStreamViewController: UIViewController, UITableViewDelegate {
         let input = searchField.rx.controlEvent(.editingChanged)
             .map { self.searchField.text }
 
+        let full = UINib(nibName: "FullImageCell", bundle: nil)
+        photoView.register(full, forCellReuseIdentifier: "full")
+
         let dataSource = RxTableViewSectionedReloadDataSource<SectionOfImageData>(
             configureCell: { _, tableView, indexPath, item in
-                let cell = tableView.dequeueReusableCell(withIdentifier: "full", for: indexPath)
+                guard let cell: FullImageCell = tableView.dequeueReusableCell(withIdentifier: "full", for: indexPath) as? FullImageCell else { return UITableViewCell() }
+
+                //                guard let cell: FullImageCell = tableView.dequeueReusableCell(withIdentifier: "full", for: indexPath) as? FullImageCell else { return UITableViewCell() }
                 do {
                     guard let url: URL = URL(string: item.imageURL) else { return cell }
                     let imgData: Data = try Data(contentsOf: url)
                     guard let image: UIImage = UIImage(data: imgData) else { return cell }
-                    cell.addSubview(UIImageView.init(image: image))
+                    cell.fullImageView.image = image
+                    //                    cell.addSubview(UIImageView.init(image: image))
                 } catch {
                     // TODO: set no image
                     return cell

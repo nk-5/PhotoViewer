@@ -37,7 +37,7 @@ final class PhotoStreamViewModel {
             }
 
             return [SectionOfImageData(items: images)]
-            
+
             }
             .drive(photoView.items(dataSource: dataSources))
             .disposed(by: disposeBag)
