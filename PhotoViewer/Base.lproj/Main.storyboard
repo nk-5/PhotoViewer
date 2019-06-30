@@ -27,10 +27,6 @@
                                     <navigationItem title="PhotoViewer" id="S5y-2a-KWz"/>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QUy-EA-Y3E">
-                                <rect key="frame" x="0.0" y="179" width="414" height="717"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search image from words!!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w7f-Sg-lB3">
                                 <rect key="frame" x="15" y="124" width="384" height="50"/>
                                 <constraints>
@@ -40,10 +36,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="A0B-Ge-rWR">
+                                <rect key="frame" x="192" y="184" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JMw-pe-ba3"/>
+                                    <constraint firstAttribute="width" constant="30" id="jzf-ub-meG"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QUy-EA-Y3E">
+                                <rect key="frame" x="0.0" y="219" width="414" height="677"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pZs-fe-tLR" firstAttribute="top" secondItem="Z2A-K0-hwv" secondAttribute="top" id="0OZ-9U-36h"/>
+                            <constraint firstItem="A0B-Ge-rWR" firstAttribute="centerX" secondItem="DjZ-Sk-jCd" secondAttribute="centerX" id="23S-xz-csP"/>
                             <constraint firstItem="pZs-fe-tLR" firstAttribute="leading" secondItem="Z2A-K0-hwv" secondAttribute="leading" id="3m2-JS-n4T"/>
                             <constraint firstItem="Z2A-K0-hwv" firstAttribute="trailing" secondItem="w7f-Sg-lB3" secondAttribute="trailing" constant="15" id="4hg-OR-qp7"/>
                             <constraint firstItem="w7f-Sg-lB3" firstAttribute="leading" secondItem="Z2A-K0-hwv" secondAttribute="leading" constant="15" id="GZx-WR-0aI"/>
@@ -52,11 +60,13 @@
                             <constraint firstAttribute="bottom" secondItem="QUy-EA-Y3E" secondAttribute="bottom" id="kjR-Pw-9pT"/>
                             <constraint firstItem="QUy-EA-Y3E" firstAttribute="trailing" secondItem="Z2A-K0-hwv" secondAttribute="trailing" id="lhZ-Ef-Q8h"/>
                             <constraint firstItem="w7f-Sg-lB3" firstAttribute="top" secondItem="pZs-fe-tLR" secondAttribute="bottom" constant="5" id="mUF-4H-L1o"/>
-                            <constraint firstItem="QUy-EA-Y3E" firstAttribute="top" secondItem="w7f-Sg-lB3" secondAttribute="bottom" constant="5" id="rAQ-lO-6UY"/>
+                            <constraint firstItem="A0B-Ge-rWR" firstAttribute="top" secondItem="w7f-Sg-lB3" secondAttribute="bottom" constant="10" id="pa0-2B-PUG"/>
+                            <constraint firstItem="QUy-EA-Y3E" firstAttribute="top" secondItem="A0B-Ge-rWR" secondAttribute="bottom" constant="5" id="rAQ-lO-6UY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Z2A-K0-hwv"/>
                     </view>
                     <connections>
+                        <outlet property="loadingIndicator" destination="A0B-Ge-rWR" id="mfb-cl-i3g"/>
                         <outlet property="photoView" destination="QUy-EA-Y3E" id="cjB-nc-SOn"/>
                         <outlet property="searchField" destination="w7f-Sg-lB3" id="awx-F7-9q0"/>
                     </connections>

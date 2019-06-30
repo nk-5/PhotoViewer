@@ -13,19 +13,36 @@ import RxDataSources
 final class PhotoStreamViewModel {
     private let disposeBag = DisposeBag()
     private let photozouAPIClient: PhotozouAPIProtocol
+    var isLoading = PublishSubject<Bool>()
 
     init(searchText: Observable<String?>,
+         loading: Reactive<UIActivityIndicatorView>,
          photoView: Reactive<UITableView>,
          dataSources: RxTableViewSectionedReloadDataSource<SectionOfImageData>,
          photozouAPIClient: PhotozouAPIProtocol = PhotozouAPI()) {
         self.photozouAPIClient = photozouAPIClient
 
+        isLoading
+            .asDriver(onErrorJustReturn: false)
+            .drive(loading.isAnimating)
+            .disposed(by: disposeBag)
+
+        isLoading
+            .asDriver(onErrorJustReturn: false)
+            .map { !$0 }
+            .drive(loading.isHidden)
+            .disposed(by: disposeBag)
+
         let response = searchText
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .filter {($0 ?? "").count > 0}
+            .map {
+                self.isLoading.onNext(true)
+                return $0
+            }
             .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .flatMapLatest {
-                photozouAPIClient.getImages(with: $0!, 20).catchErrorJustReturn(Response.empty)
+            .flatMapLatest { input in
+                return photozouAPIClient.getImages(with: input!, 20).catchErrorJustReturn(Response.empty)
             }
             .observeOn(MainScheduler.instance)
             .asDriver(onErrorJustReturn: Response.empty)
@@ -48,7 +65,6 @@ final class PhotoStreamViewModel {
                         let imgData: Data = try Data(contentsOf: url)
                         img.append(UIImage(data: imgData))
 
-                        //                        if $0.info!.photo.count > idx+1 && (idx == 0 || !((idx+1) % 5 == 0)) {
                         if $0.info!.photo.count > idx+1 && (idx == 0 || storeThumbnailCount > 0) {
                             guard let nextUrl: URL = URL(string: $0.info!.photo[idx+1].imageUrl) else { continue }
                             let nextImgData: Data = try Data(contentsOf: nextUrl)
@@ -74,6 +90,7 @@ final class PhotoStreamViewModel {
                     images.append(image)
                 }
 
+                self.isLoading.onNext(false)
                 return [SectionOfImageData(items: images)]
 
             }

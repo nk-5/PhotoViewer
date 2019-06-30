@@ -7,7 +7,12 @@
 //
 
 import UIKit
+import SwiftIconFont
 
 class FullImageCell: UITableViewCell {
     @IBOutlet weak var fullImageView: UIImageView!
+
+    override func awakeFromNib() {
+        fullImageView.setIcon(from: .fontAwesome, code: "image")
+    }
 }

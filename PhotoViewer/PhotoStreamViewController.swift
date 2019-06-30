@@ -15,6 +15,7 @@ class PhotoStreamViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var photoView: UITableView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 
     private var viewModel: PhotoStreamViewModel?
     private let disposeBag = DisposeBag()
@@ -23,6 +24,8 @@ class PhotoStreamViewController: UIViewController, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadingIndicator.isHidden = true
+
         let input = searchField.rx.controlEvent(.editingChanged)
             .map { self.searchField.text }
 
@@ -56,8 +59,10 @@ class PhotoStreamViewController: UIViewController, UITableViewDelegate {
         self.dataSource = dataSource
 
         viewModel = PhotoStreamViewModel(searchText: input,
+                                         loading: loadingIndicator.rx,
                                          photoView: photoView.rx,
-                                         dataSources: dataSource)
+                                         dataSources: dataSource
+        )
 
         photoView.rx.setDelegate(self)
             .disposed(by: disposeBag)

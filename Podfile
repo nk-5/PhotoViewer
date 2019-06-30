@@ -12,6 +12,9 @@ target 'PhotoViewer' do
   pod 'RxDataSources', '~> 4.0'
   pod 'RxAlamofire'
 
+  pod 'SwiftIconFont'
+
+
   target 'PhotoViewerTests' do
     inherit! :search_paths
     pod 'RxBlocking', '~> 5'
